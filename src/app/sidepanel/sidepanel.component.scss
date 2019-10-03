@@ -1,0 +1,178 @@
+    .sidePanel {
+      background-color: #F4F4F4;
+      width: 23%;
+      height: 92%;
+      position: relative;
+      display: inline-block;
+      float: left;
+      font-weight: 100;
+    }
+    
+    .sidePanelClose {
+     width: 4%;
+    }
+  
+  .sideBarHeader {
+    height: 48px;
+    margin-top: 12px;
+    position: relative;
+  }
+  
+  .sideBarButton {
+    position: relative;
+    background-color: #F4F4F4;
+    width: 32px;
+    height: 32px;
+    left: 6px;
+    top: 10px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+  } 
+  
+  .sideBarButton:hover {
+    background-color: #FAFAFA;
+  }
+  
+  .fa-bars {
+    position: absolute;
+    color: #4860FB;
+    cursor: pointer;
+    right: 7px;
+    bottom: 6px;
+    font-size: 16px;
+    opacity: 0.5;
+  }
+  
+  .myDayIcon, .importantIcon, .plannedIcon, .listCreated, .assignIcon, .taskIcon, .newListIcon {
+      background-color: #F4F4F4;
+      width: 100%;
+      height: 36px;
+      position: relative;
+      margin-top: 10px;
+      cursor: pointer;
+  }
+  
+  .myDayIcon:hover, .listCreated:hover, .importantIcon:hover, .newListIcon:hover, .plannedIcon:hover, .assignIcon:hover {
+    background-color: #FAFAFA;
+  }
+  
+  .fa-sun, .fa-list, .fa-star, .fa-calendar-alt, .fa-user, .fa-home {
+    position: absolute;
+    color: #82849F;
+    font-size: 16px;
+    top: 15px;
+    left: 16px;
+    display: inline-block;
+  }
+  
+  .sidePanalText, .listName {
+    position: absolute;
+    top: 14px;
+    left: 53px;
+    color: #4F5257;
+    font-size: 14px;
+  }
+
+  .sidePanalTextClose {
+    display: none;
+  }
+  
+  .importantIcon {
+    margin-top: 0%;
+  }
+  
+  .plannedIcon {
+    margin-top: 0%;
+  }
+  
+  .assignIcon {
+    margin-top: 0%;
+  }
+  
+  .fa-user {
+    color: #5CA52D;
+  }
+  
+  .taskIcon {
+    margin-top: 0%; 
+  }
+  
+  .fa-home {
+    color: #2078e5;
+  }
+  
+  .listGroupBar {
+    height: 48px;
+    margin-top: 10px;
+    position: relative;
+  }
+  
+  .newListIcon {
+      width: 85%;
+      position: absolute;
+      background-color: #F4F4F4;
+  }
+  
+  .plusIcon {
+    float: left;
+    display: inline-block;
+    position: relative;
+    top: 6px;
+    height: 24px;
+    width: 24px;
+    left: 12px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+  }
+  
+  .plusIcon i {
+    position: absolute;
+    font-size: 18px;
+    color: #2078e5;
+    top: 1px;
+    right: 1px;
+  }
+  
+  .newListInput{
+      display: inline-block;
+      float: left;
+      position: relative;
+      left: 29px;
+      top: 5px;
+      background-color: transparent;
+  }
+  
+  .newListInputClose {
+    display: none;
+  }
+  
+  .newListText {
+      height: 24px;
+      border: none;
+      outline: none;
+      background: transparent;
+  }
+  
+  .listCreated {
+      margin-top: 0px;
+  }
+  
+  .fa-list {
+    color: #2078e5;
+  }
+  
+  .listName {
+    color: #2078e5;
+  }
+  
+  .spanCount {
+    position: absolute;
+    left: 265px;
+    top: 16px;
+    font-size: 13px;
+    color: #2078e5;
+    font-weight: 900;
+  }
+  

@@ -1,0 +1,284 @@
+.taskDiv{
+    width: 77%;
+    height: 92%;
+    background-color: white;
+    display: inline-block;
+    float: left;
+    position: relative;
+}
+
+.taskDivClose {
+  width: 50%;
+}
+
+.taskDivPartialFull {
+  width: 69%;
+}
+
+.taskDivFull {
+  width: 96%;
+}
+
+.taskHeader {
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    position: relative;
+}
+
+.taskTitle{
+    position: relative;
+    background-color: white;
+    width: 100%;
+    height: 48px;
+    left: 0px;
+    top: 12px;
+}
+
+.title {
+	  background-color: white;
+    width: 63%;
+    height: 40px;
+    top: 4px;
+    display: inline-block;
+    float: left;  
+}
+
+.share {
+    background-color: white;
+    width: 94px;
+    height: 40px;
+    display: inline-block;
+    float: right;	
+    top: 4px;
+    left: 43px;
+    cursor: pointer;
+}
+
+.share:hover {
+  background-color: #EDEDED;
+}
+
+.fa-user-plus{
+    top: 11px;
+    left: 15px;
+    color: 3D69E4;
+    font-size: 14px;
+    margin-left: 11px;
+    margin-top: 10px;
+}
+
+.shareText {
+    color: 3D69E4;
+    top: 10px;
+    left: 36px;
+    font-size: 14px;
+}
+
+.sort {
+	background-color: white;
+    width: 94px;
+    height: 40px;
+    display: inline-block;
+    float: right;  
+    top: 4px;
+    left: 51px;
+    cursor: pointer;
+    color: 3D69E4;
+}
+
+.sort:hover {
+	background-color: #EDEDED;
+}
+
+.fa-sort{
+    top: 6px;
+    left: 19px;
+    color: 3D69E4;
+    font-size: 20px;
+    margin-left: 19px;
+    margin-top: 6px;
+}
+
+.sortText {
+    color: 3D69E4;
+    top: 9px;
+    left: 36px;
+    font-size: 14px;	
+}
+
+.titleName {
+   position: absolute;
+   display: inline-block;
+   float: left;
+   width: 294px;
+   height: 37px;
+   top: 9px;
+   left: 21px;
+   color: #3e69e4;
+   font-weight: 600;
+   font-size: 20px;
+   outline: none;
+   border: none;
+}
+
+.titleName:focus {
+  border: 1px solid;
+  color: #ACACAC;
+}
+
+.deleteList {
+  display: inline-block;
+  float: right;
+  left: 200px;
+  top: 9px;
+  outline: none;
+  border: none;
+  background: transparent;
+  height: 22px;
+  width: 33px;
+  cursor: pointer;
+  margin-right: 4px;
+    margin-top: 5px;
+}
+
+.deleteList:hover {
+  background-color: #EDEDED;
+}
+
+.deleteList i {
+  color: #3e69e4;
+}
+
+.addTask {
+    width: 93%;
+    height: 51px;
+    background-color: white;
+    position: relative;
+    margin-left: 21px;
+        border-bottom-width: thin;
+    border-bottom-style: ridge;
+}
+
+.plusTaskIcon {
+    display: inline-block;
+    float: left;
+    position: relative;
+    height: 50px;
+    width: 28px;
+    top: 2px;
+    left: -4px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.plusTaskIcon i {
+	  position: absolute;
+    font-size: 18;
+    color: #2078e5;
+    top: 14px;
+    right: 5px;
+}
+
+.newTaskText {
+	  position: absolute;
+    height: 50px;
+    width: 100%;
+    left: 21px;
+    padding-left: 15px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+}
+
+
+.addedTask {
+    width: 93%;
+    height: 51px;
+    background-color: white;
+    position: relative;
+    margin-left: 21px;
+    border-bottom-width: thin;
+    border-bottom-style: ridge;
+}
+
+.round {
+  position: relative;
+  width: 31px;
+  height: 31px;
+  display: inline-block;
+  float: left;
+  top: 9px;
+  left: -4px;
+}
+
+.round label {
+  background-color: #fff;
+  border: 2px solid #2078e5;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 16px;
+  left: 4px;
+  position: absolute;
+  top: 6px;
+  width: 15px;
+}
+
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 3px;
+  left: 3px;
+  opacity: 0;
+  position: absolute;
+  top: 5px;
+  transform: rotate(-45deg);
+  width: 8px;
+}
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: #2078e5;
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+.plusAddedTaskIcon {
+    display: inline-block;
+    float: left;
+    position: relative;
+    height: 50px;
+    width: 28px;
+    top: 4px;
+    left: -6px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.taskName {
+	  position: relative;
+    top: 18px;
+    left: 7px;
+    font-size: 14px;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.taskBar {
+	overflow: auto;
+	height: 91%;
+}

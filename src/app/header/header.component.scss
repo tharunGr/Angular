@@ -1,0 +1,92 @@
+.header {
+    background-color: #2878D7;
+    height: 48px;
+    width: 100%;
+    position: relative;
+  }
+  
+  .gridMenu, .toDoTextInHeader, .userIcon, .questionIcon, .settingIcon {
+    width: 48px;
+    height: 100%;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    float: left;
+  }
+  
+  .gridMenu:hover, .userIcon:hover, .questionIcon:hover, .settingIcon:hover {
+    background-color: #1B5A9E;
+  }
+  
+  .fa-th, .fa-user-circle, .fa-question-circle, .fa-cog {
+    position: absolute;
+    color: white;
+    left: 15px;
+    top: 17px;
+    opacity: 0.8;
+  }
+  
+  .todoText {
+    width: 48px;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    position: absolute;
+    top: 18px;
+    left: 6px;
+  }
+  
+  .searchBox {
+    float: left;
+    height: 48;
+    display: inline-block;
+    position: relative;
+    left: 315px;
+    width: 432px;
+  }
+  
+  .searchText {
+    position: absolute;
+    width: 389px;
+    left: 25px; 
+    top: 8px;
+    height: 32px;
+    background-color: #C5DDF8;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    padding-left: 6px;
+  }
+
+  .userIcon{
+    float: right;
+  }
+  
+  .fa-user-circle {
+    font-size: 24px;
+    top: 15px;
+    left: 9px;
+    opacity: 1;
+  }
+  
+  .questionIcon {
+    float: right;
+  }
+  
+  .fa-question-circle {
+    top: 16px;
+    left: 13px;
+    font-size: 22px;
+    opacity: 1;
+  }
+
+  .settingIcon {
+    float: right;
+  }
+  
+  .fa-cog {
+    top: 16px;
+    left: 16px;
+    font-size: 22px;
+    opacity: 1;
+  }
