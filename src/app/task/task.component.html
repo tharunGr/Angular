@@ -2,7 +2,8 @@
         <div class="taskHeader">
             <div class="taskTitle">
                 <div class="title">
-                    <input value="Task" class="titleName"/>
+                    <input *ngIf="currentList == null" value="Task" class="titleName"/>
+                    <input *ngIf="currentList != null" value={{currentList.name}} class="titleName"/>
                 </div>
                 <div class="share">
                     <i class="fas fa-user-plus"></i>
@@ -18,13 +19,22 @@
             </div>
         </div>
         <div class="taskBar">
-            <div class="task">
+            <div class="task" *ngFor="let task of currentList.tasks">
+              <div class="addedTask" id={{task.id}} (click)="showStepsBar(task)">
+                <div class="round">
+                  <input type="checkbox" id="checkbox{{task.id}}" (click)="updateTaskAsFinished(task)" [checked] = "task.isFinished ? 'checked' : null"/>
+                  <label for="checkbox{{task.id}}" ></label>
+                </div>
+                <span *ngIf="task.isFinished" class="taskName strike">{{task.name}}</span>
+                <span *ngIf="!task.isFinished" class="taskName">{{task.name}}</span>
+              </div>
             </div>
             <div class="addTask">
                 <button class="plusTaskIcon">
                     <label class="newTaskTextLabelClass" for="newTaskTextLabel"><i id="plus" class="fas fa-plus"></i></label>
                 </button>
-                <input id="newTaskTextLabel" class="newTaskText" type="text" placeholder="Add task"/>
+                <input id="newTaskTextLabel" class="newTaskText" type="text" placeholder="Add task" #taskName (keyup.enter)="saveTask(taskName.value, $event)"/>
             </div>
         </div>  
     </div>
+    

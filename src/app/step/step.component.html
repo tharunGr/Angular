@@ -1,0 +1,52 @@
+<div class="stepsBar">
+        <div class="sectionHeader">
+            <div class="roundIconInStepHeader">
+                <input type="checkbox" id="checkboxInStepHeader" (click)="updateTaskAsFinished(task)" [checked] = "currentTask.isFinished ? 'checked' : null"/>
+                <label for="checkboxInStepHeader"></label>
+                <span *ngIf="currentTask.isFinished" class="taskInStepHeader taskInStepHeaderStriked" contenteditable="true">{{currentTask.name}}</span>
+                <span *ngIf="!currentTask.isFinished" class="taskInStepHeader" contenteditable="true">{{currentTask.name}}</span>
+            </div>
+        </div>
+        <div class="steps">
+            <div class="newSteps" *ngFor="let step of currentTask.steps">
+                <div class="addedStep">
+                    <div class="roundStepBarIcon">
+                        <input type="checkbox" id="checkbox{{step.id}}" (click)="updateStepAsFinished(step)" [checked] = "step.isFinished ? 'checked' : null"/>
+                        <label for="checkbox{{step.id}}"></label>
+                    </div>
+                    <span contenteditable="true" class="stepTextBar">{{step.name}}</span>
+                    <i class="fa fa-times" id="close{{step.id}}"></i>
+                </div>
+            </div>
+            <div class="addSteps">
+                <button class="plusStepIcon">
+                <label class="newStepTextLabelClass" for="newStepTextLabel"><i id="plusStep" class="fas fa-plus"></i></label>
+                </button>
+                <input id="newStepTextLabelClass" class="newStepText" type="text" placeholder="Add step" #stepName (keyup.enter)="saveStep(stepName.value, $event)"/>
+            </div>
+        </div>
+        <div class="sectionInStep">
+        </div>
+        <div class="sectionInStep">
+        </div>
+        <div class="sectionFeature">
+        </div>
+        <div class="sectionFeature">
+        </div>
+        <div class="sectionInStep">
+        </div>
+        <div class="addNote">
+            <input class="addNoteText" type="text" placeholder="Add note"/>
+        </div>
+        <div class="stepsBarFooter">
+            <button class="backIcon" value="close">
+                <i class="fa fa-arrow-right"></i>
+            </button>
+            <div class="createdDay">
+                <span>Created Today</span>
+            </div>
+            <button class="trashIcon">
+                    <i class="fa fa-trash"></i>
+            </button>
+        </div>
+    </div>

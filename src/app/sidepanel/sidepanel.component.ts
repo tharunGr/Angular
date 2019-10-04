@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { List } from '../list';
 import { TaskComponent } from '../task/task.component';
+import { ListCollection } from '../list-collection';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-sidepanel',
@@ -9,16 +11,16 @@ import { TaskComponent } from '../task/task.component';
 })
 export class SidepanelComponent implements OnInit {
 
-  todoLists: List[];
+  todoListForDisplay: List[];
+  listCollection: ListCollection = {todoList: []};
   list: List;
   listId: number = 0;
-  taskComponent: TaskComponent;
 
-  constructor() {
+  constructor(private data: DataService) {
   }
 
   ngOnInit() {
-
+    this.data.currentList.subscribe((alist) => this.list = alist)
   }
 
   toggleSideMenu(event) {
@@ -42,14 +44,14 @@ export class SidepanelComponent implements OnInit {
   }
 
   saveList(listName: string, event) {
-    this.list = {id: this.listId++, name: listName, status: true};
-    this.taskComponent.displayListNameInTask(listName);
+    this.list = {id: this.listId++, name: listName, status: true, tasks: []};
     event.target.value = null;
-    if (this.todoLists == null) {
-      this.todoLists = [];
-      this.todoLists.push(this.list);  
-    } else {
-      this.todoLists.push(this.list);
+    this.listCollection.todoList.push(this.list);
+    this.todoListForDisplay = this.listCollection.todoList;
+    this.data.updateList(this.list);
     }
+
+  showListDetailInTask(list: List) {
+    this.data.updateList(list);
   }
 }
