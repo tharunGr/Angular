@@ -13,43 +13,39 @@ export class SidepanelComponent implements OnInit {
 
   todoListForDisplay: List[];
   listCollection: ListCollection = {todoList: []};
+  taskCount: number = 0;
   list: List;
   listId: number = 0;
+  sideButton: boolean = true;
 
   constructor(private data: DataService) {
   }
 
   ngOnInit() {
-    this.data.currentList.subscribe((alist) => this.list = alist)
+    this.data.currentList.subscribe((alist) => this.list = alist);
   }
 
   toggleSideMenu(event) {
     if (event.currentTarget.value == "open") {
-      document.querySelector(".sidePanel").setAttribute("class", "sidePanel sidePanelClose");
-      document.querySelector(".newListInput").setAttribute("class", "newListInput newListInputClose");
+      this.sideButton = false;
       document.querySelector(".taskDiv").setAttribute("class", "taskDiv taskDivFull");
-      document.querySelectorAll(".sidePanalText").forEach(element => {
-        element.setAttribute("class", "sidePanalTextClose");
-      });
       event.currentTarget.value = "close";
     } else {
-      document.querySelector(".sidePanel").setAttribute("class", "sidePanel");
-      document.querySelector(".newListInput").setAttribute("class", "newListInput");
+      this.sideButton = true;
       document.querySelector(".taskDiv").setAttribute("class", "taskDiv");
-      document.querySelectorAll(".sidePanalTextClose").forEach(element => {
-        element.setAttribute("class", "sidePanalText");
-      });
       event.currentTarget.value = "open";
     }
   }
 
   saveList(listName: string, event) {
-    this.list = {id: this.listId++, name: listName, status: true, tasks: []};
-    event.target.value = null;
-    this.listCollection.todoList.push(this.list);
-    this.todoListForDisplay = this.listCollection.todoList;
-    this.data.updateList(this.list);
+    if (listName != "") {
+      this.list = {id: this.listId++, name: listName, status: true, tasks: []};
+      event.target.value = null;
+      this.listCollection.todoList.push(this.list);
+      this.todoListForDisplay = this.listCollection.todoList;
+      this.data.updateList(this.list);
     }
+  }
 
   showListDetailInTask(list: List) {
     this.data.updateList(list);

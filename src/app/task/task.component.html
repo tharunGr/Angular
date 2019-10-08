@@ -1,9 +1,9 @@
-<div class="taskDiv">
+<div class="taskDiv" [ngClass]="sideButton ? 'taskDiv taskDivFull' : 'taskDiv'">
         <div class="taskHeader">
             <div class="taskTitle">
                 <div class="title">
                     <input *ngIf="currentList == null" value="Task" class="titleName"/>
-                    <input *ngIf="currentList != null" value={{currentList.name}} class="titleName"/>
+                    <input *ngIf="currentList != null" value={{currentList.name}} class="titleName" #editListName (keyup.enter)="editList(editListName.value, $event)"/>
                 </div>
                 <div class="share">
                     <i class="fas fa-user-plus"></i>
@@ -13,7 +13,7 @@
                     <i class="fas fa-sort"></i>
                     <span class="sortText">Sort</span>
                 </div>
-                <button class="deleteList">
+                <button class="deleteList" (click)="deleteList()">
                     <i class="fa fa-trash"></i>
                 </button>
             </div>

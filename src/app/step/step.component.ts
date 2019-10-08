@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../task';
 import { DataService } from '../data.service';
 import { Step } from '../step';
+import { List } from '../list';
 
 @Component({
   selector: 'app-step',
@@ -10,13 +11,15 @@ import { Step } from '../step';
 })
 export class StepComponent implements OnInit {
 
+  currentList: List;
   currentTask: Task;
   step: Step;
-  stepId: number;
+  stepId: number = 0;
   
   constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.currentList.subscribe(alist => this.currentList = alist);
     this.data.currentTask.subscribe(atask => this.currentTask = atask);
   }
 
@@ -29,9 +32,11 @@ export class StepComponent implements OnInit {
   }
 
   saveStep(stepName: string, event) {
-    this.step = {id: this.stepId++, name: stepName, isFinished: false};
-    event.target.value = null;
-    this.currentTask.steps.push(this.step);
+    if (stepName != "") {
+      this.step = {id: this.stepId++, name: stepName, isFinished: false};
+      event.target.value = null;
+      this.currentTask.steps.push(this.step);
+    }
   }
 
   updateStepAsFinished(step: Step) {
@@ -40,5 +45,25 @@ export class StepComponent implements OnInit {
     } else {
       step.isFinished = true;
     }
+  }
+
+  deleteTask() {
+    if (confirm("Do you want to delete the task ?")) {
+      this.currentList.tasks.splice(this.currentList.tasks.indexOf(this.currentTask), 1);
+    } 
+  }
+
+  deleteStep(step: Step) {
+    if (confirm("Do you want to delete the step ?")) {
+      this.currentTask.steps.splice(this.currentTask.steps.indexOf(step), 1);
+    } 
+  }
+
+  editTask(editTaskName, event) {
+    this.currentTask.name = editTaskName;
+  }
+
+  editStep(step: Step, editStepName, event) {
+    step.name = editStepName;
   }
 }

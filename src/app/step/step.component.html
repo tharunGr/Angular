@@ -3,19 +3,22 @@
             <div class="roundIconInStepHeader">
                 <input type="checkbox" id="checkboxInStepHeader" (click)="updateTaskAsFinished(task)" [checked] = "currentTask.isFinished ? 'checked' : null"/>
                 <label for="checkboxInStepHeader"></label>
-                <span *ngIf="currentTask.isFinished" class="taskInStepHeader taskInStepHeaderStriked" contenteditable="true">{{currentTask.name}}</span>
-                <span *ngIf="!currentTask.isFinished" class="taskInStepHeader" contenteditable="true">{{currentTask.name}}</span>
+                <input *ngIf="!currentTask.isFinished" value={{currentTask.name}} class="taskInStepHeader" #editTaskName (keyup.enter)="editTask(editTaskName.value, $event)"/>
+                <input *ngIf="currentTask.isFinished" value={{currentTask.name}} class="taskInStepHeader taskInStepHeaderStriked" #editTaskName (keyup.enter)="editTask(editTaskName.value, $event)"/>
             </div>
         </div>
         <div class="steps">
             <div class="newSteps" *ngFor="let step of currentTask.steps">
                 <div class="addedStep">
                     <div class="roundStepBarIcon">
-                        <input type="checkbox" id="checkbox{{step.id}}" (click)="updateStepAsFinished(step)" [checked] = "step.isFinished ? 'checked' : null"/>
-                        <label for="checkbox{{step.id}}"></label>
+                        <input type="checkbox" id="checkboxStep{{step.id}}" (click)="updateStepAsFinished(step)" [checked] = "step.isFinished ? 'checked' : null"/>
+                        <label for="checkboxStep{{step.id}}"></label>
                     </div>
-                    <span contenteditable="true" class="stepTextBar">{{step.name}}</span>
-                    <i class="fa fa-times" id="close{{step.id}}"></i>
+                    <!--<span *ngIf="step.isFinished" contenteditable="true" class="stepTextBar stepTextBarStrike">{{step.name}}</span>
+                    <span *ngIf="!step.isFinished" contenteditable="true" class="stepTextBar">{{step.name}}</span>-->
+                    <input *ngIf="!step.isFinished" value={{step.name}} class="stepTextBar" #editStepName (keyup.enter)="editStep(editStepName.value, $event)"/>
+                    <input *ngIf="step.isFinished" value={{step.name}} class="stepTextBar stepTextBarStrike" #editStepName (keyup.enter)="editStep(step, editStepName.value, $event)"/>
+                    <i class="fa fa-times" id="close{{step.id}}" (click)="deleteStep(step)"></i>
                 </div>
             </div>
             <div class="addSteps">
@@ -45,7 +48,7 @@
             <div class="createdDay">
                 <span>Created Today</span>
             </div>
-            <button class="trashIcon">
+            <button class="trashIcon" (click)="deleteTask()">
                     <i class="fa fa-trash"></i>
             </button>
         </div>

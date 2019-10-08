@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../task';
 import { List } from '../list';
 import { DataService } from '../data.service';
+import { ListCollection } from '../list-collection';
+import { SidepanelComponent } from '../sidepanel/sidepanel.component';
 
 @Component({
   selector: 'app-task',
@@ -14,6 +16,8 @@ export class TaskComponent implements OnInit {
   currentTask: Task;
   task: Task;
   taskId: number = 0;
+  @Input() sidePanel: SidepanelComponent;
+  //sideButton: boolean = this.sidePanel.sideButton;
 
   constructor(private data: DataService) { }
 
@@ -24,11 +28,13 @@ export class TaskComponent implements OnInit {
   }
 
   saveTask(taskName: string, event) {
-    this.task = {id: this.taskId++, name: taskName, status: true, isFinished: false, steps: []};
-    event.target.value = null;
-    this.currentList.tasks.push(this.task);
-    this.data.updateList(this.currentList);
-    this.data.setUpdate(this.currentList)
+    if ((taskName != "") && (this.sidePanel.listCollection.todoList != null)) {
+      this.task = {id: this.taskId++, name: taskName, status: true, isFinished: false, steps: []};
+      event.target.value = null;
+      this.currentList.tasks.push(this.task);
+      this.data.updateList(this.currentList);
+      this.data.setUpdate(this.currentList)
+    }
   }
 
   updateTaskAsFinished(task: Task) {
@@ -46,8 +52,18 @@ export class TaskComponent implements OnInit {
       document.querySelector(".taskDiv").setAttribute("class", "taskDiv taskDivClose");
       document.querySelector(".stepsBar").setAttribute("class", "stepsBar stepsBarOpen");
     } else {
-      document.querySelector(".taskDiv").setAttribute("class", "taskDiv taskDitaskDivPartialFull");
+      document.querySelector(".taskDiv").setAttribute("class", "taskDiv taskDivPartialFull");
       document.querySelector(".stepsBar").setAttribute("class", "stepsBar stepsBarOpen");
     }	
+  }
+
+  editList(editListName, event) {
+    this.currentList.name = editListName;
+  }
+
+  deleteList() {
+    if (confirm("Do you want to delete the list ?")) {
+      this.sidePanel.listCollection.todoList.splice(this.sidePanel.listCollection.todoList.indexOf(this.currentList), 1);
+    }
   }
 }
