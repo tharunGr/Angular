@@ -1,4 +1,4 @@
-<div class="taskDiv" [ngClass]="sideButton ? 'taskDiv taskDivFull' : 'taskDiv'">
+<div class={{taskBarToggle}} [ngClass]="taskBarToggle">
         <div class="taskHeader">
             <div class="taskTitle">
                 <div class="title">
@@ -25,8 +25,10 @@
                   <input type="checkbox" id="checkbox{{task.id}}" (click)="updateTaskAsFinished(task)" [checked] = "task.isFinished ? 'checked' : null"/>
                   <label for="checkbox{{task.id}}" ></label>
                 </div>
+                <span class="stepCount">{{stepCount(task)}}</span>
                 <span *ngIf="task.isFinished" class="taskName strike">{{task.name}}</span>
                 <span *ngIf="!task.isFinished" class="taskName">{{task.name}}</span>
+                
               </div>
             </div>
             <div class="addTask">

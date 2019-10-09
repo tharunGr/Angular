@@ -15,6 +15,8 @@ export class StepComponent implements OnInit {
   currentTask: Task;
   step: Step;
   stepId: number = 0;
+  backButtonValue: string = "close";
+  tog: string = "stepsBar";
   
   constructor(private data: DataService) { }
 
@@ -23,14 +25,23 @@ export class StepComponent implements OnInit {
     this.data.currentTask.subscribe(atask => this.currentTask = atask);
   }
 
-  updateTaskAsFinished(task: Task) {
-    if (task.isFinished) {
-      task.isFinished = false;
+  /**
+   * Checked or Unchecked the task.
+   */
+  updateTaskAsFinished() {
+    if (this.currentTask.isFinished) {
+      this.currentTask.isFinished = false;
     } else {
-      task.isFinished = true;
+      this.currentTask.isFinished = true;
     }
   }
 
+  /**
+   * Saves the new list.
+   * 
+   * @param stepName Step name for new step to be created. 
+   * @param event Event to null the input text box.
+   */
   saveStep(stepName: string, event) {
     if (stepName != "") {
       this.step = {id: this.stepId++, name: stepName, isFinished: false};
@@ -39,6 +50,11 @@ export class StepComponent implements OnInit {
     }
   }
 
+  /**
+   * Checked or Unchecked the step.
+   * 
+   * @param step Step to be checked or unchecked.
+   */
   updateStepAsFinished(step: Step) {
     if (step.isFinished) {
       step.isFinished = false;
@@ -47,22 +63,38 @@ export class StepComponent implements OnInit {
     }
   }
 
+  /**
+   * Deletes the current task.
+   */
   deleteTask() {
     if (confirm("Do you want to delete the task ?")) {
       this.currentList.tasks.splice(this.currentList.tasks.indexOf(this.currentTask), 1);
     } 
   }
 
+  /**
+   * Deletes the current step.
+   */
   deleteStep(step: Step) {
     if (confirm("Do you want to delete the step ?")) {
       this.currentTask.steps.splice(this.currentTask.steps.indexOf(step), 1);
     } 
   }
 
+  /**
+   * Updating the task's name.
+   * 
+   * @param editTaskName Editing the active task's name. 
+   */
   editTask(editTaskName, event) {
     this.currentTask.name = editTaskName;
   }
 
+  /**
+   * Updating the step's name.
+   * 
+   * @param editStepName Editing the active step's name. 
+   */
   editStep(step: Step, editStepName, event) {
     step.name = editStepName;
   }

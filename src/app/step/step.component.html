@@ -42,7 +42,8 @@
             <input class="addNoteText" type="text" placeholder="Add note"/>
         </div>
         <div class="stepsBarFooter">
-            <button class="backIcon" value="close">
+            <!--<button class="backIcon" value="close">-->
+            <button [value]="backButtonValue" class="backIcon" value="{{backButtonValue}}">
                 <i class="fa fa-arrow-right"></i>
             </button>
             <div class="createdDay">

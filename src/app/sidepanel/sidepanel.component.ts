@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild } from '@angular/core';
 import { List } from '../list';
 import { TaskComponent } from '../task/task.component';
 import { ListCollection } from '../list-collection';
 import { DataService } from '../data.service';
+import { OutletContext } from '@angular/router';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-sidepanel',
@@ -13,10 +15,11 @@ export class SidepanelComponent implements OnInit {
 
   todoListForDisplay: List[];
   listCollection: ListCollection = {todoList: []};
-  taskCount: number = 0;
   list: List;
   listId: number = 0;
   sideButton: boolean = true;
+  sideBarButtonValue: string = "open";
+  @Input() taskBar: TaskComponent;
 
   constructor(private data: DataService) {
   }
@@ -25,18 +28,29 @@ export class SidepanelComponent implements OnInit {
     this.data.currentList.subscribe((alist) => this.list = alist);
   }
 
+  /**
+   * Toggle the side menu button.
+   * 
+   * @param event Event to get value of that toggling button.
+   */
   toggleSideMenu(event) {
     if (event.currentTarget.value == "open") {
       this.sideButton = false;
-      document.querySelector(".taskDiv").setAttribute("class", "taskDiv taskDivFull");
+      this.taskBar.taskBarToggle = "taskDiv taskDivFull";
       event.currentTarget.value = "close";
     } else {
       this.sideButton = true;
-      document.querySelector(".taskDiv").setAttribute("class", "taskDiv");
+      this.taskBar.taskBarToggle = "taskDiv";
       event.currentTarget.value = "open";
     }
   }
 
+  /**
+   * Saves new list and its details.
+   * 
+   * @param listName List name to create new list.
+   * @param event Event to null the input text box.
+   */
   saveList(listName: string, event) {
     if (listName != "") {
       this.list = {id: this.listId++, name: listName, status: true, tasks: []};
@@ -47,7 +61,20 @@ export class SidepanelComponent implements OnInit {
     }
   }
 
+  /**
+   * Update the list as active list.
+   * 
+   * @param list List to be updated in data service.
+   */
   showListDetailInTask(list: List) {
     this.data.updateList(list);
+  }
+
+  /**
+   * 
+   * @param list Count number of unfinished tasks does list has.
+   */
+  taskCount(list: List) {
+    return list.tasks.filter(task => false == task.isFinished).length; 
   }
 }

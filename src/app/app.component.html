@@ -1,4 +1,4 @@
 <app-header></app-header>
-<app-sidepanel #sidePanel></app-sidepanel>
-<app-task [sidePanel] = "sidePanel"></app-task>
-<app-step></app-step>
+<app-sidepanel #sidePanel [taskBar] = "taskBar"></app-sidepanel>
+<app-task  #taskBar [sidePanel] = "sidePanel" [stepBar] = "stepBar"></app-task>
+<app-step #stepBar></app-step>

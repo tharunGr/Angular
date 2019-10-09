@@ -1,6 +1,6 @@
 <div class="sidePanel" [ngClass]="sideButton ? 'sidePanel' : 'sidePanel sidePanelClose'">
     <div class="sideBarHeader">
-        <button (click)="toggleSideMenu($event)" class="sideBarButton" value="open">
+        <button (click)="toggleSideMenu($event)" [value]="sideBarButtonValue" class="sideBarButton" value={{sideBarButtonValue}}>
             <i class="fa fa-bars" aria-hidden="true"></i>
         </button>
     </div>
@@ -50,7 +50,7 @@
             <div class="listName">
                 <span>{{list.name}}</span>
             </div>
-            <span class="spanCount">{{list.tasks.length}}</span>
+            <span class="spanCount">{{taskCount(list)}}</span>
         </div>
     </div>
     <div class="listGroupBar">

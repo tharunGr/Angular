@@ -205,6 +205,10 @@
     border-bottom-style: ridge;
 }
 
+.addedTask:hover {
+  background-color: #F5F5F5;
+}
+
 .round {
   position: relative;
   width: 31px;
@@ -268,10 +272,10 @@
 }
 
 .taskName {
-	  position: relative;
-    top: 18px;
-    left: 7px;
-    font-size: 14px;
+  position: relative;
+  top: 9px;
+  left: 7px;
+  font-size: 16px;
 }
 
 .strike {
@@ -281,4 +285,12 @@
 .taskBar {
 	overflow: auto;
 	height: 91%;
+}
+
+.stepCount {
+  position: absolute;
+  top: 31px;
+  left: 38px;
+  font-size: 12px;
+  color: #858588;
 }
