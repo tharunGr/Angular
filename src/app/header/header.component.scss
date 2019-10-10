@@ -31,91 +31,112 @@ $base-top: 16px;
   height: 48px;
   width: 100%;
   position: relative;
-}
 
-.gridMenu {
-  @include headerBlocks(left);
-}
+  .gridMenu {
+    @include headerBlocks(left);
 
-.fa-th {
-  @include headerIcons() {
-    left: 15px;
-    top: $base-top + 1;
-    opacity: $icons-opacity - 0.2;
+    .fa-th {
+      @include headerIcons() {
+        left: 15px;
+        top: $base-top + 1;
+        opacity: $icons-opacity - 0.2;
+      }
+    }
+  }
+
+  .toDoTextInHeader{
+    @include headerBlocks(left);
+
+    .todoText {
+      width: 48px;
+      font-weight: 600;
+      font-size: $base-font-size;
+      color: $icons-color;
+      position: absolute;
+      top: $base-top + 2;
+      left: 6px;
+    }
+  }
+
+  .searchBox {
+    float: left;
+    height: 48;
+    display: inline-block;
+    position: relative;
+    left: 315px;
+    width: 432px;
+
+    .searchText {
+      position: absolute;
+      width: 389px;
+      left: 25px; 
+      top: $base-top - 8;
+      height: 32px;
+      background-color: #C5DDF8;
+      outline: none;
+      border: none;
+      border-radius: 3px;
+      padding-left: 6px;
+    }
+  }
+
+  .userIcon{
+    @include headerBlocks(right);
+
+    .fa-user-circle {
+      @include headerIcons() {
+        font-size: $base-font-size + 8;
+        top: $base-top - 1;
+        left: 9px;
+        opacity: $icons-opacity;
+      }
+    }
+  }
+
+  .questionIcon {
+    @include headerBlocks(right);
+
+    .fa-question-circle {
+      @include headerIcons() {
+        top: $base-top;
+        left: 13px;
+        font-size: $base-font-size + 6;
+        opacity: $icons-opacity;
+      }
+    }
+  }
+
+  .settingIcon {
+    @include headerBlocks(right);
+
+    .fa-cog {
+      @include headerIcons() {
+        top: $base-top;
+        left: 16px;
+        font-size: $base-font-size + 6;
+        opacity: $icons-opacity;
+      }
+    }
   }
 }
 
-.toDoTextInHeader{
-  @include headerBlocks(left);
-}
 
-.todoText {
-  width: 48px;
-  font-weight: 600;
-  font-size: $base-font-size;
-  color: $icons-color;
-  position: absolute;
-  top: $base-top + 2;
-  left: 6px;
-}
 
-.searchBox {
-  float: left;
-  height: 48;
-  display: inline-block;
-  position: relative;
-  left: 315px;
-  width: 432px;
-}
 
-.searchText {
-  position: absolute;
-  width: 389px;
-  left: 25px; 
-  top: $base-top - 8;
-  height: 32px;
-  background-color: #C5DDF8;
-  outline: none;
-  border: none;
-  border-radius: 3px;
-  padding-left: 6px;
-}
 
-.userIcon{
-  @include headerBlocks(right);
-}
 
-.fa-user-circle {
-  @include headerIcons() {
-    font-size: $base-font-size + 8;
-    top: $base-top - 1;
-    left: 9px;
-    opacity: $icons-opacity;
-  }
-}
 
-.questionIcon {
-  @include headerBlocks(right);
-}
 
-.fa-question-circle {
-  @include headerIcons() {
-    top: $base-top;
-    left: 13px;
-    font-size: $base-font-size + 6;
-    opacity: $icons-opacity;
-  }
-}
 
-.settingIcon {
-  @include headerBlocks(right);
-}
 
-.fa-cog {
-  @include headerIcons() {
-    top: $base-top;
-    left: 16px;
-    font-size: $base-font-size + 6;
-    opacity: $icons-opacity;
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
