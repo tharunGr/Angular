@@ -16,7 +16,7 @@ export class StepComponent implements OnInit {
   step: Step;
   stepId: number = 0;
   backButtonValue: string = "close";
-  tog: string = "stepsBar";
+  stepBarToggle: string = "stepsBar";
   
   constructor(private data: DataService) { }
 
