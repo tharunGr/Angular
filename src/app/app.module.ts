@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidepanelComponent } from './sidepanel/sidepanel.component';
 import { TaskComponent } from './task/task.component';
 import { StepComponent } from './step/step.component';
+import { TaskDirective } from './task.directive';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { StepComponent } from './step/step.component';
     HeaderComponent,
     SidepanelComponent,
     TaskComponent,
-    StepComponent
+    StepComponent,
+    TaskDirective,
   ],
   imports: [
     BrowserModule,

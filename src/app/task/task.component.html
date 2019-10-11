@@ -35,7 +35,7 @@
                 <button class="plusTaskIcon">
                     <label class="newTaskTextLabelClass" for="newTaskTextLabel"><i id="plus" class="fas fa-plus"></i></label>
                 </button>
-                <input id="newTaskTextLabel" class="newTaskText" type="text" placeholder="Add task" #taskName (keyup.enter)="saveTask(taskName.value, $event)"/>
+                <input appTask id="newTaskTextLabel" class="newTaskText" type="text" placeholder="Add task" #taskName (keyup.enter)="saveTask(taskName.value, $event)"/>
             </div>
         </div>  
     </div>
